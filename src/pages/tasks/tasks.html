@@ -1,0 +1,37 @@
+<!--
+  Generated template for the Tasks page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ <ion-toolbar color="primary">
+   <!--(search)="test()"-->
+    <ion-searchbar  (input)="onInput($event)"></ion-searchbar>
+  </ion-toolbar>
+ <!-- <ion-navbar>
+    <ion-title>tasks</ion-title>
+  </ion-navbar>
+-->
+</ion-header>
+
+
+<ion-content padding>
+  <!--(ionCancel)="onCancel($event)"-->
+  <!--<ion-searchbar
+  [showCancelButton]="true"
+  (ionInput)="onInput($event)"
+  >
+</ion-searchbar>-->
+<ion-list inset>
+  <ion-input placeholder="What needs to be done?" autofocus="" [(ngModel)]="title" (keyup.enter)="addTodo()" ></ion-input>
+  
+  <ion-item *ngFor="let t of allTask" ><!--(click)="taskSelected(t)"-->
+     
+    <ion-label [ngClass]="{'donestatus': t.Status=='done','pendingstatus':t.Status=='pending'}" >{{t.Title}}</ion-label>
+    <ion-icon item-right (click)="deleteTask(t)"  ios="ios-trash" md="md-trash"></ion-icon>
+    <ion-icon item-right (click)="updateTask(t)"  ios="ios-color-wand" md="md-color-wand"></ion-icon>
+     <!--<ion-icon name="trash" ios="ios-trash" md="md-trash"></ion-icon>-->
+  </ion-item>
+</ion-list>
+</ion-content>
